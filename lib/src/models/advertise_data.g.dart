@@ -8,7 +8,7 @@ part of 'advertise_data.dart';
 
 AdvertiseData _$AdvertiseDataFromJson(Map<String, dynamic> json) =>
     AdvertiseData(
-      serviceUuid: json['serviceUuid'] as String?,
+      serviceUuid: json['uuid'] as String?,
       manufacturerId: json['manufacturerId'] as int?,
       manufacturerData: const Uint8ListConverter()
           .fromJson(json['manufacturerData'] as List?),
@@ -18,13 +18,13 @@ AdvertiseData _$AdvertiseDataFromJson(Map<String, dynamic> json) =>
           .toList(),
       includeDeviceName: json['includeDeviceName'] as bool? ?? false,
       localName: json['localName'] as String?,
-      includePowerLevel: json['includePowerLevel'] as bool? ?? false,
+      includePowerLevel: json['transmissionPowerIncluded'] as bool? ?? false,
       serviceSolicitationUuid: json['serviceSolicitationUuid'] as String?,
     );
 
 Map<String, dynamic> _$AdvertiseDataToJson(AdvertiseData instance) =>
     <String, dynamic>{
-      'serviceUuid': instance.serviceUuid,
+      'uuid': instance.serviceUuid,
       'manufacturerId': instance.manufacturerId,
       'manufacturerData':
           const Uint8ListConverter().toJson(instance.manufacturerData),
@@ -32,6 +32,6 @@ Map<String, dynamic> _$AdvertiseDataToJson(AdvertiseData instance) =>
       'serviceData': instance.serviceData,
       'includeDeviceName': instance.includeDeviceName,
       'localName': instance.localName,
-      'includePowerLevel': instance.includePowerLevel,
+      'transmissionPowerIncluded': instance.includePowerLevel,
       'serviceSolicitationUuid': instance.serviceSolicitationUuid,
     };
